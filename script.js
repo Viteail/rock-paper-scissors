@@ -1,97 +1,80 @@
-let PCScore = 0;
-let PlayerScore = 0;
-let Rounds = 1;
-
+const MOVES = {
+  ROCK: 'Rock',
+  PAPER: 'Paper',
+  SCISSORS: 'Scissors'
+}
 
 function computerPlay() {
   const randomChoice = Math.floor(Math.random() * 3);
   switch (randomChoice) {
     case 0:
-      return "Rock";
+      return MOVES.ROCK;
     case 1:
-      return "Paper";
+      return MOVES.PAPER;
     case 2:
-      return "Scissors";
+      return MOVES.SCISSORS;
   }
 }
 
-const ComputerSelection = computerPlay();
+// Player selection
 
-function playRound() {
-  /* Rock conditions */
-  const WinRock =
-    ComputerSelection === "Scissors" && playerSelection === "Rock";
-  const LoseRock = ComputerSelection === "Paper" && playerSelection === "Rock";
-  const TieRock = ComputerSelection === "Rock" && playerSelection === "Rock";
-  /* Scissors conditions */
-  const WinScissors =
-    ComputerSelection === "Paper" && playerSelection === "Scissors";
-  const LoseScissors =
-    ComputerSelection === "Rock" && playerSelection === "Scissors";
-  const TieScissors =
-    ComputerSelection === "Scissors" && playerSelection === "Scissors";
-  /* Paper conditions */
-  const WinPaper = ComputerSelection === "Rock" && playerSelection === "Paper";
-  const LosePaper =
-    ComputerSelection === "Scissors" && playerSelection === "Paper";
-  const TiePaper = ComputerSelection === "Paper" && playerSelection === "Paper";
+const RockButton = document.querySelector("#Rock");
+RockButton.addEventListener("click", () => playRound(MOVES.ROCK));
 
-  if (WinRock) {
+const PaperButton = document.querySelector("#Paper");
+PaperButton.addEventListener("click", () => playRound(MOVES.PAPER));
+
+
+const ScissorsButton = document.querySelector("#Scissors");
+ScissorsButton.addEventListener("click", () => playRound(MOVES.SCISSORS));
+
+
+function playRound(playerSelection, ComputerSelection) {
+  // player moves
+  const PlayerMoveIsRock = playerSelection === MOVES.ROCK;
+  const PlayerMoveIsPaper = playerSelection === MOVES.PAPER;
+  const PlayerMoveIsScissors = playerSelection === MOVES.SCISSORS;
+  // PC moves
+  ComputerSelection = computerPlay(this);
+  const PCMoveIsRock = ComputerSelection === MOVES.ROCK;
+  const PCMoveIsPaper = ComputerSelection === MOVES.PAPER;
+  const PCMoveIsScissors = ComputerSelection === MOVES.SCISSORS;
+
+  if (PCMoveIsScissors && PlayerMoveIsRock) {
     console.log("Computer have choice Scissors");
     console.log("You choice Rock!");
     console.log("You Win! Rock beats Scissors");
-    PlayerScore++;
-  } else if (LoseRock) {
+  } else if (PCMoveIsPaper && PlayerMoveIsRock) {
     console.log("Computer have choice Paper");
     console.log("You choice Rock!");
     console.log("You Lose! Paper beats Rock");
-    PCScore++;
-  } else if (TieRock) {
+  } else if (PCMoveIsRock && PlayerMoveIsRock) {
     console.log("Computer have choice Rock");
     console.log("You choice Rock!");
     console.log("Its a Tie!");
-  } else if (WinScissors) {
+  } else if (PCMoveIsPaper && PlayerMoveIsScissors) {
     console.log("Computer have choice Paper");
     console.log("You choice Scissors!");
     console.log("You Win! Scissors beats Paper");
-    PlayerScore++;
-  } else if (LoseScissors) {
+  } else if (PCMoveIsRock && PlayerMoveIsScissors) {
     console.log("Computer have choice Rock");
     console.log("You choice Scissors!");
     console.log("You Lose! Rock beats Scissors");
-    PCScore++;
-  } else if (TieScissors) {
+  } else if (PCMoveIsScissors && PlayerMoveIsScissors) {
     console.log("Computer have choice Scissors");
     console.log("You choice Scissors!");
     console.log("Its a Tie!");
-  } else if (WinPaper) {
+  } else if (PCMoveIsRock && PlayerMoveIsPaper) {
     console.log("Computer have choice Rock");
     console.log("You choice Paper!");
     console.log("You Win! Paper beats Rock");
-    PlayerScore++;
-  } else if (LosePaper) {
+  } else if (PCMoveIsScissors && PlayerMoveIsPaper) {
     console.log("Computer have choice Scissors");
     console.log("You choice Paper!");
     console.log("You Lose! Scissors beats Paper");
-    PCScore++;
-  } else if (TiePaper) {
+  } else if (PCMoveIsPaper && PlayerMoveIsPaper) {
     console.log("Computer have choice Paper");
     console.log("You choice Paper!");
     console.log("Its a Tie!");
   }
-  if (PlayerScore > PCScore) {
-    console.log('You Won!')
-  } else if (PCScore > PlayerScore) {
-  console.log('You Lose!')
-  } else if (PCScore === PlayerScore) {
-  console.log('Its a Tie!')
-  }
-}
-
-/* Player selection */
-
-const playerSelection = prompt("Select Rock, Paper or Scissors");
-
-if ((playerSelection === null && "Rock") || "Paper" || "Scissors") {
-  playRound();
 }
