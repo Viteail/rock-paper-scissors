@@ -18,15 +18,16 @@ button:active {
   transform: translateY(4px);
 }
 
-.container {
+.Container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  background-color: rgb(200, 228, 251);
 }
 
-.display {
+.Display {
     display: flex;
     gap: 100px;
     justify-content: space-between;
@@ -35,4 +36,12 @@ button:active {
 
 .Player-Selected, .PC-Selected {
     width: 200px;
+    font-size: 24px;
+}
+
+.Winner {
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
 }

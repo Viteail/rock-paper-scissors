@@ -1,8 +1,8 @@
 const MOVES = {
-  ROCK: 'Rock',
-  PAPER: 'Paper',
-  SCISSORS: 'Scissors'
-}
+  ROCK: "Rock",
+  PAPER: "Paper",
+  SCISSORS: "Scissors",
+};
 
 function computerPlay() {
   const randomChoice = Math.floor(Math.random() * 3);
@@ -24,10 +24,8 @@ RockButton.addEventListener("click", () => playRound(MOVES.ROCK));
 const PaperButton = document.querySelector("#Paper");
 PaperButton.addEventListener("click", () => playRound(MOVES.PAPER));
 
-
 const ScissorsButton = document.querySelector("#Scissors");
 ScissorsButton.addEventListener("click", () => playRound(MOVES.SCISSORS));
-
 
 function playRound(playerSelection, ComputerSelection) {
   // player moves
@@ -39,42 +37,46 @@ function playRound(playerSelection, ComputerSelection) {
   const PCMoveIsRock = ComputerSelection === MOVES.ROCK;
   const PCMoveIsPaper = ComputerSelection === MOVES.PAPER;
   const PCMoveIsScissors = ComputerSelection === MOVES.SCISSORS;
+  // display
+  const SHOWPLAYERMOVE = document.querySelector(".Player-Selected");
+  const SHOWPCMOVE = document.querySelector(".PC-Selected");
+  const SHOWWINNER = document.querySelector(".Winner");
 
   if (PCMoveIsScissors && PlayerMoveIsRock) {
-    console.log("Computer have choice Scissors");
-    console.log("You choice Rock!");
-    console.log("You Win! Rock beats Scissors");
+    SHOWPCMOVE.textContent = "Computer have choice Scissors";
+    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWWINNER.textContent = "You Win! Rock beats Scissors";
   } else if (PCMoveIsPaper && PlayerMoveIsRock) {
-    console.log("Computer have choice Paper");
-    console.log("You choice Rock!");
-    console.log("You Lose! Paper beats Rock");
+    SHOWPCMOVE.textContent = "Computer have choice Paper";
+    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWWINNER.textContent = "You Lose! Paper beats Rock";
   } else if (PCMoveIsRock && PlayerMoveIsRock) {
-    console.log("Computer have choice Rock");
-    console.log("You choice Rock!");
-    console.log("Its a Tie!");
+    SHOWPCMOVE.textContent = "Computer have choice Rock";
+    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWWINNER.textContent = "Its a Tie!";
   } else if (PCMoveIsPaper && PlayerMoveIsScissors) {
-    console.log("Computer have choice Paper");
-    console.log("You choice Scissors!");
-    console.log("You Win! Scissors beats Paper");
+    SHOWPCMOVE.textContent = "Computer have choice Paper";
+    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWWINNER.textContent = "You Win! Scissors beats Paper";
   } else if (PCMoveIsRock && PlayerMoveIsScissors) {
-    console.log("Computer have choice Rock");
-    console.log("You choice Scissors!");
-    console.log("You Lose! Rock beats Scissors");
+    SHOWPCMOVE.textContent = "Computer have choice Rock";
+    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWWINNER.textContent = "You Lose! Rock beats Scissors";
   } else if (PCMoveIsScissors && PlayerMoveIsScissors) {
-    console.log("Computer have choice Scissors");
-    console.log("You choice Scissors!");
-    console.log("Its a Tie!");
+    SHOWPCMOVE.textContent = "Computer have choice Scissors";
+    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWWINNER.textContent = "Its a Tie!";
   } else if (PCMoveIsRock && PlayerMoveIsPaper) {
-    console.log("Computer have choice Rock");
-    console.log("You choice Paper!");
-    console.log("You Win! Paper beats Rock");
+    SHOWPCMOVE.textContent = "Computer have choice Rock";
+    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWWINNER.textContent = "You Win! Paper beats Rock";
   } else if (PCMoveIsScissors && PlayerMoveIsPaper) {
-    console.log("Computer have choice Scissors");
-    console.log("You choice Paper!");
-    console.log("You Lose! Scissors beats Paper");
+    SHOWPCMOVE.textContent = "Computer have choice Scissors";
+    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWWINNER.textContent = "You Lose! Scissors beats Paper";
   } else if (PCMoveIsPaper && PlayerMoveIsPaper) {
-    console.log("Computer have choice Paper");
-    console.log("You choice Paper!");
-    console.log("Its a Tie!");
+    SHOWPCMOVE.textContent = "Computer have choice Paper";
+    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWWINNER.textContent = "Its a Tie!";
   }
 }
