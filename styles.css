@@ -45,3 +45,18 @@ button:active {
   display: flex;
   justify-content: center;
 }
+
+.Scores {
+  display: flex;
+}
+
+.Player-Scores, .PC-Scores {
+  margin-left: 150px;
+  margin-right: 150px;
+
+}
+
+.Round {
+  margin-bottom: 50px;
+  font-size: 45px;
+}

@@ -4,6 +4,15 @@ const MOVES = {
   SCISSORS: "Scissors",
 };
 
+const SCORES = {
+  PLAYERSCORE: 0,
+  PCSCORE: 0,
+};
+
+const ROUNDS = {
+  ROUND: 1,
+}
+
 function computerPlay() {
   const randomChoice = Math.floor(Math.random() * 3);
   switch (randomChoice) {
@@ -37,46 +46,90 @@ function playRound(playerSelection, ComputerSelection) {
   const PCMoveIsRock = ComputerSelection === MOVES.ROCK;
   const PCMoveIsPaper = ComputerSelection === MOVES.PAPER;
   const PCMoveIsScissors = ComputerSelection === MOVES.SCISSORS;
-  // display
+  // display-moves
   const SHOWPLAYERMOVE = document.querySelector(".Player-Selected");
   const SHOWPCMOVE = document.querySelector(".PC-Selected");
   const SHOWWINNER = document.querySelector(".Winner");
+  // display-scores
+  const SHOWPLAYERSCORE = document.querySelector(".PL-SCORE");
+  const SHOWPCSCORE = document.querySelector(".PC-SCORE");
+  // display-rounds
+  const SHOWFINALWINNER = document.querySelector(".Round")
+  const SHOWROUNDS = document.querySelector(".ROUNDS");
 
   if (PCMoveIsScissors && PlayerMoveIsRock) {
     SHOWPCMOVE.textContent = "Computer have choice Scissors";
     SHOWPLAYERMOVE.textContent = "You choice Rock!";
     SHOWWINNER.textContent = "You Win! Rock beats Scissors";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsPaper && PlayerMoveIsRock) {
     SHOWPCMOVE.textContent = "Computer have choice Paper";
     SHOWPLAYERMOVE.textContent = "You choice Rock!";
     SHOWWINNER.textContent = "You Lose! Paper beats Rock";
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsRock && PlayerMoveIsRock) {
     SHOWPCMOVE.textContent = "Computer have choice Rock";
     SHOWPLAYERMOVE.textContent = "You choice Rock!";
     SHOWWINNER.textContent = "Its a Tie!";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsPaper && PlayerMoveIsScissors) {
     SHOWPCMOVE.textContent = "Computer have choice Paper";
     SHOWPLAYERMOVE.textContent = "You choice Scissors!";
     SHOWWINNER.textContent = "You Win! Scissors beats Paper";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsRock && PlayerMoveIsScissors) {
     SHOWPCMOVE.textContent = "Computer have choice Rock";
     SHOWPLAYERMOVE.textContent = "You choice Scissors!";
     SHOWWINNER.textContent = "You Lose! Rock beats Scissors";
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsScissors && PlayerMoveIsScissors) {
     SHOWPCMOVE.textContent = "Computer have choice Scissors";
     SHOWPLAYERMOVE.textContent = "You choice Scissors!";
     SHOWWINNER.textContent = "Its a Tie!";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsRock && PlayerMoveIsPaper) {
     SHOWPCMOVE.textContent = "Computer have choice Rock";
     SHOWPLAYERMOVE.textContent = "You choice Paper!";
     SHOWWINNER.textContent = "You Win! Paper beats Rock";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsScissors && PlayerMoveIsPaper) {
     SHOWPCMOVE.textContent = "Computer have choice Scissors";
     SHOWPLAYERMOVE.textContent = "You choice Paper!";
     SHOWWINNER.textContent = "You Lose! Scissors beats Paper";
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
   } else if (PCMoveIsPaper && PlayerMoveIsPaper) {
     SHOWPCMOVE.textContent = "Computer have choice Paper";
     SHOWPLAYERMOVE.textContent = "You choice Paper!";
     SHOWWINNER.textContent = "Its a Tie!";
+    SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
+    SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
+    ROUNDS.ROUND++, (SHOWROUNDS.textContent = ROUNDS.ROUND);
+  }
+
+  if (ROUNDS.ROUND === 5 && SCORES.PLAYERSCORE > SCORES.PCSCORE) {
+    SHOWFINALWINNER.textContent = "Congratulation!"
+    SHOWWINNER.textContent = "You Win!";
+    SHOWPCMOVE.textContent = "";
+    SHOWPLAYERMOVE.textContent = "";
+  } else if (ROUNDS.ROUND === 5 && SCORES.PLAYERSCORE < SCORES.PCSCORE) {
+    SHOWFINALWINNER.textContent = "Soorrryy!"
+    SHOWWINNER.textContent = "You Lost, PC Wins!";
+    SHOWPCMOVE.textContent = "";
+    SHOWPLAYERMOVE.textContent = "";
+  } else if (ROUNDS.ROUND === 5 && SCORES.PLAYERSCORE === SCORES.PCSCORE) {
+    SHOWFINALWINNER.textContent = "Oh!"
+    SHOWWINNER.textContent = "It's a Tie!";
+    SHOWPCMOVE.textContent = "";
+    SHOWPLAYERMOVE.textContent = "";
   }
 }
