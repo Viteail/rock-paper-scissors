@@ -60,3 +60,7 @@ button:active {
   margin-bottom: 50px;
   font-size: 45px;
 }
+
+.disable {
+  display: none;
+}
