@@ -1,21 +1,55 @@
 body {
   margin: 0;
-  min-height: 100vh;
+  font-family: monospace;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(18, 64, 64, 0.575);
+  position: fixed;
+  width: 100%;
+  color: rgb(106, 181, 246);
+  font-size: 32px;
+  text-shadow: 2px 0 0 rgb(39, 38, 38), -2px 0 0 rgb(39, 38, 38),
+    0 2px 0 rgb(39, 38, 38), 0 -2px 0 rgb(39, 38, 38), 1px 1px rgb(39, 38, 38),
+    -1px -1px 0 rgb(39, 38, 38), 1px -1px 0 rgb(39, 38, 38),
+    -1px 1px 0 rgb(39, 38, 38);
 }
 
 button {
   padding: 20px 30px;
-  border: 2px solid black;
-  background-color: bisque;
+  border: 2px solid rgb(51, 60, 98);
+  background-color: rgb(24, 41, 44);
+  color: rgb(5, 153, 190);
   border-radius: 5%;
-  box-shadow: 1px 1px;
+  box-shadow: 10px 10px 20px 0px black;
   cursor: pointer;
   margin: 10px;
   font-weight: 900;
   font-size: 20px;
+  width: 150px;
+  transition: 200ms;
 }
+
+button:hover {
+  transform: scale(1.05);
+  border-radius: 10%;
+  box-shadow: 7px 7px 12px 1px black;
+}
+
 button:active {
   transform: translateY(4px);
+}
+
+.disable {
+  display: none;
+}
+
+.Player-Selection {
+  bottom: 25%;
+  position: fixed;
 }
 
 .Container {
@@ -24,19 +58,20 @@ button:active {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-color: rgb(200, 228, 251);
+  background-color: rgb(55, 62, 68);
 }
 
 .Display {
-    display: flex;
-    gap: 100px;
-    justify-content: space-between;
-    margin: 20px;
+  display: flex;
+  gap: 100px;
+  justify-content: space-between;
+  margin: 20px;
 }
 
-.Player-Selected, .PC-Selected {
-    width: 200px;
-    font-size: 24px;
+.Player-Selected,
+.PC-Selected {
+  width: 200px;
+  font-size: 24px;
 }
 
 .Winner {
@@ -48,12 +83,14 @@ button:active {
 
 .Scores {
   display: flex;
+  position: fixed;
+  bottom: 40%;
 }
 
-.Player-Scores, .PC-Scores {
+.Player-Scores,
+.PC-Scores {
   margin-left: 150px;
   margin-right: 150px;
-
 }
 
 .Round {
@@ -61,6 +98,24 @@ button:active {
   font-size: 45px;
 }
 
-.disable {
-  display: none;
+.game {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  bottom: 45%;
+  position: fixed;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(30, 59, 59, 0.507);
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  padding: 5px;
+  color: rgb(106, 181, 246);
 }

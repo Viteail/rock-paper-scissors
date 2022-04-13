@@ -72,7 +72,10 @@ function playRound(playerSelection, ComputerSelection) {
       (SCORES.PCSCORE = 0),
       (SHOWPCSCORE.textContent = SCORES.PLAYERSCORE),
       (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE),
-      getPlayAgainButton.classList.add("disable")
+      getPlayAgainButton.classList.add("disable"),
+      getPaperButton.classList.remove("disable"),
+      getRockButton.classList.remove("disable"),
+      getScissorsButton.classList.remove("disable")
     );
   }
 
@@ -81,66 +84,66 @@ function playRound(playerSelection, ComputerSelection) {
   }
   // conditions
   if (PCMoveIsScissors && PlayerMoveIsRock) {
-    SHOWPCMOVE.textContent = "Computer have choice Scissors";
-    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWPCMOVE.textContent = "PC selected Scissors";
+    SHOWPLAYERMOVE.textContent = "You selected Rock!";
     SHOWWINNER.textContent = "You Win! Rock beats Scissors";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsPaper && PlayerMoveIsRock) {
-    SHOWPCMOVE.textContent = "Computer have choice Paper";
-    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWPCMOVE.textContent = "PC selected Paper";
+    SHOWPLAYERMOVE.textContent = "You selected Rock!";
     SHOWWINNER.textContent = "You Lose! Paper beats Rock";
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsRock && PlayerMoveIsRock) {
-    SHOWPCMOVE.textContent = "Computer have choice Rock";
-    SHOWPLAYERMOVE.textContent = "You choice Rock!";
+    SHOWPCMOVE.textContent = "PC selected Rock";
+    SHOWPLAYERMOVE.textContent = "You selected Rock!";
     SHOWWINNER.textContent = "Its a Tie!";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsPaper && PlayerMoveIsScissors) {
-    SHOWPCMOVE.textContent = "Computer have choice Paper";
-    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWPCMOVE.textContent = "PC selected Paper";
+    SHOWPLAYERMOVE.textContent = "You selected Scissors!";
     SHOWWINNER.textContent = "You Win! Scissors beats Paper";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsRock && PlayerMoveIsScissors) {
-    SHOWPCMOVE.textContent = "Computer have choice Rock";
-    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWPCMOVE.textContent = "PC selected Rock";
+    SHOWPLAYERMOVE.textContent = "You selected Scissors!";
     SHOWWINNER.textContent = "You Lose! Rock beats Scissors";
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsScissors && PlayerMoveIsScissors) {
-    SHOWPCMOVE.textContent = "Computer have choice Scissors";
-    SHOWPLAYERMOVE.textContent = "You choice Scissors!";
+    SHOWPCMOVE.textContent = "PC selected Scissors";
+    SHOWPLAYERMOVE.textContent = "You selected Scissors!";
     SHOWWINNER.textContent = "Its a Tie!";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsRock && PlayerMoveIsPaper) {
-    SHOWPCMOVE.textContent = "Computer have choice Rock";
-    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWPCMOVE.textContent = "PC selected Rock";
+    SHOWPLAYERMOVE.textContent = "You selected Paper!";
     SHOWWINNER.textContent = "You Win! Paper beats Rock";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsScissors && PlayerMoveIsPaper) {
-    SHOWPCMOVE.textContent = "Computer have choice Scissors";
-    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWPCMOVE.textContent = "PC selected Scissors";
+    SHOWPLAYERMOVE.textContent = "You selected Paper!";
     SHOWWINNER.textContent = "You Lose! Scissors beats Paper";
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
     ROUNDS.ROUND++,
       (SHOWFINALWINNER.innerHTML = "Round" + " " + `${ROUNDS.ROUND}`);
   } else if (PCMoveIsPaper && PlayerMoveIsPaper) {
-    SHOWPCMOVE.textContent = "Computer have choice Paper";
-    SHOWPLAYERMOVE.textContent = "You choice Paper!";
+    SHOWPCMOVE.textContent = "PC selected Paper";
+    SHOWPLAYERMOVE.textContent = "You selected Paper!";
     SHOWWINNER.textContent = "Its a Tie!";
     SCORES.PLAYERSCORE++, (SHOWPLAYERSCORE.textContent = SCORES.PLAYERSCORE);
     SCORES.PCSCORE++, (SHOWPCSCORE.textContent = SCORES.PCSCORE);
@@ -160,17 +163,26 @@ function rounds() {
     SHOWPCMOVE.textContent = "";
     SHOWPLAYERMOVE.textContent = "";
     getPlayAgainButton.classList.remove("disable");
+    getPaperButton.classList.add("disable");
+    getRockButton.classList.add("disable");
+    getScissorsButton.classList.add("disable");
   } else if (ROUNDS.ROUND === 5 && SCORES.PLAYERSCORE < SCORES.PCSCORE) {
     SHOWFINALWINNER.textContent = "Soorrryy!";
     SHOWWINNER.textContent = "You Lost, PC Wins!";
     SHOWPCMOVE.textContent = "";
     SHOWPLAYERMOVE.textContent = "";
     getPlayAgainButton.classList.remove("disable");
+    getPaperButton.classList.add("disable");
+    getRockButton.classList.add("disable");
+    getScissorsButton.classList.add("disable");
   } else if (ROUNDS.ROUND === 5 && SCORES.PLAYERSCORE === SCORES.PCSCORE) {
     SHOWFINALWINNER.textContent = "Oh!";
     SHOWWINNER.textContent = "It's a Tie!";
     SHOWPCMOVE.textContent = "";
     SHOWPLAYERMOVE.textContent = "";
     getPlayAgainButton.classList.remove("disable");
+    getPaperButton.classList.add("disable");
+    getRockButton.classList.add("disable");
+    getScissorsButton.classList.add("disable");
   }
 }
