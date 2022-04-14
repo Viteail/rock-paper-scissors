@@ -10,7 +10,7 @@ body {
   background-color: rgba(18, 64, 64, 0.575);
   position: fixed;
   width: 100%;
-  color: rgb(106, 181, 246);
+  color: rgb(45, 140, 223);
   font-size: 32px;
   text-shadow: 2px 0 0 rgb(39, 38, 38), -2px 0 0 rgb(39, 38, 38),
     0 2px 0 rgb(39, 38, 38), 0 -2px 0 rgb(39, 38, 38), 1px 1px rgb(39, 38, 38),
@@ -79,12 +79,15 @@ button:active {
   font-weight: 700;
   display: flex;
   justify-content: center;
+  text-shadow: 1px 1px rgb(19, 54, 151);
 }
 
 .Scores {
   display: flex;
   position: fixed;
   bottom: 40%;
+  color: rgba(25, 198, 214, 0.65);
+  text-shadow: 1px 1px rgb(181, 184, 194);
 }
 
 .Player-Scores,
@@ -96,6 +99,8 @@ button:active {
 .Round {
   margin-bottom: 50px;
   font-size: 45px;
+  text-shadow: 1px 1px rgb(19, 54, 151),
+    2px 2px rgb(96, 96, 172);
 }
 
 .game {
@@ -105,6 +110,7 @@ button:active {
   flex-direction: column;
   bottom: 45%;
   position: fixed;
+  color: rgba(25, 198, 214, 0.65);
 }
 
 .footer {
